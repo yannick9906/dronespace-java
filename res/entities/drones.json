@@ -1,0 +1,97 @@
+{
+  "0":{
+    "name": "transport",
+    "health": 100,
+    "damage": 0.1,
+    "cargosize": 1000,
+    "maxenergy": 450,
+    "baseweight": 500,
+    "baseenergydraw": -0.01,
+    "cmds": {
+      "help":{
+        "action":"listcmd"
+      },
+      "info":{
+        "action":"listinfo"
+      },
+      "moveto *":{
+        "action":"move",
+        "entity":"@arg1"
+      },
+      "mv *":{
+        "action":"move",
+        "entity":"@arg1"
+      },
+      "cam":{
+        "action":"listentity"
+      },
+      "calculate something complex": {
+        "action":"consumeenergy",
+        "rate":-10,
+        "time":10000
+      },
+      "calculate something more complex": {
+        "action":"consumeenergy",
+        "rate":-50,
+        "time":10000
+      }
+    }
+  },
+  "1":{
+    "name": "laserturret",
+    "health": 400,
+    "damage": 25,
+    "cargosize": 10,
+    "maxenergy": 400,
+    "baseweight": 600,
+    "baseenergydraw": -0.01
+  },
+  "2":{
+    "name": "missleturret",
+    "health": 300,
+    "damage": 15,
+    "cargosize": 50,
+    "maxenergy": 300,
+    "baseweight": 700,
+    "baseenergydraw": -0.01
+  },
+  "3":{
+    "name": "scout",
+    "health": 100,
+    "damage": 0,
+    "cargosize": 300,
+    "maxenergy": 700,
+    "baseweight": 500,
+    "baseenergydraw": -0.01,
+    "cmds": {
+      "help":{
+        "action":"listcmd"
+      },
+      "info":{
+        "action":"listinfo"
+      },
+      "moveto *":{
+        "action":"move",
+        "entity":"$arg1"
+      },
+      "mv *":{
+        "action":"move",
+        "entity":"$arg1"
+      },
+      "cam":{
+        "action":"listentity"
+      },
+      "calculate something complex": {
+        "action":"consumeenergy",
+        "rate":-10,
+        "time":10000
+      },
+      "calculate something more complex": {
+        "action":"consumeenergy",
+        "rate":-50,
+        "time":10000
+      }
+
+    }
+  }
+}

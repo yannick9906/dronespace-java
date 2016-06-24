@@ -1,0 +1,110 @@
+{
+  "stage1-01":{
+    "stages":[
+      "Welcome to dronespace. This is where your story begins.\nSince you have managed to come here, you should be familiar with the controls.\n",
+      "** If you have managed to come here...\nYou're awesome!**"
+    ],
+    "startundiscoverd":1,
+    "commands":{
+      "help":{
+        "action":"listcmd"
+      },
+      "info":{
+        "action":"listinfo"
+      }
+    }
+  },
+  "stage1-02":{
+    "stages":[
+      "You missed 2'147'483'625 alarms.\n",
+	  "You should wake up now!\n",
+	  "*** __RING__ *** __RING__ *** __RING__ ***"
+    ],
+    "startundiscoverd":3,
+    "commands":{
+      "help":{
+        "action":"listcmd"
+      },
+      "info":{
+        "action":"listinfo"
+      }
+    }
+  },
+  "stage1-03":{
+    "stages":[
+      "\n$\\ ls\n",
+	  "$\\ "
+    ],
+    "startundiscoverd":2,
+    "commands":{
+      "help":{
+        "action":"listcmd"
+      },
+      "info":{
+        "action":"listinfo"
+      }
+    }
+  },
+  "stage1-04":{
+    "stages":[
+      "Systemlog 2204-04-12\n0755.5=>[INFO] Staring Controller\n0755.5=>[INFO] Logging onto ship systems\n0755.7=>[INFO] Success\n",
+      "0757.0=>[WARN] Abnormal Activities detected in Docking Station 01\n0758.6=>[WARN] Docking Station 01 offline\n",
+      "0759.1=>[WARN] Oxygenleak (-100% in 0.001 ms) in Floor 01\n0759.2=>[WARN] Abnormal Activities detected in Floor 01\n",
+      "0759.9=>[WARN] Energy low\n=>[INFO] Ship is going into power saving mode at 0800\n",
+      "0800.0=>[INFO] Power saving mode activated. Goodby\n"
+    ],
+    "startundiscoverd":2,
+    "commands":{
+      "help":{
+        "action":"listcmd"
+      },
+      "info":{
+        "action":"listinfo"
+      }
+    }
+  },
+  "stage1-05":{
+    "stages":[
+      "Nuclear Fusion Reactor 'Near' 2.6\n",
+	  "[WARN] => No more fuel...\n"
+    ],
+    "startundiscoverd":1,
+    "commands":{
+      "help":{
+        "action":"listcmd"
+      },
+      "info":{
+        "action":"listinfo"
+      }
+    }
+  },
+  "stage1-06":{
+    "stages":[
+      "Battery mk2\n 15% full. (+1200EU/s)"
+    ],
+    "startundiscoverd":1,
+    "commands":{
+      "help":{
+        "action":"listcmd"
+      },
+      "info":{
+        "action":"listinfo"
+      }
+    }
+  },
+  "stage1-07":{
+    "stages":[
+      "Diary: 2204-04-11 2300\nIt was a normal day on our mining ship.\n",
+	  "We should reach our new mining location some time tomorrow.\n"
+    ],
+    "startundiscoverd":2,
+    "commands":{
+      "help":{
+        "action":"listcmd"
+      },
+      "info":{
+        "action":"listinfo"
+      }
+    }
+  }
+}

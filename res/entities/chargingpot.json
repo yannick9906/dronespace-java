@@ -1,0 +1,15 @@
+{
+  "commands":{
+    "help":{
+      "action":"listcmd"
+    },
+    "charge":{
+      "action":"chargedrone",
+      "rate":10
+    },
+    "fastcharge":{
+      "action":"chargedrone",
+      "rate":20
+    }
+  }
+}

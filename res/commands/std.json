@@ -1,0 +1,97 @@
+{
+  "exit":{
+    "action": "setVar",
+    "var": "running",
+    "value": false
+  },
+  "fullscreen":{
+    "action": "invVar",
+    "var": "fullscreen"
+  },
+  "hi":{
+    "action":"print",
+    "args":["left","B.E.N.",true,true],
+    "text":"Heyho"
+  },
+  "hey":{
+    "action":"print",
+    "args":["left","B.E.N.",true,true],
+    "text":"Heyho"
+  },
+  "how are you":{
+    "action":"print",
+    "args":["left","B.E.N.",false,true],
+    "text":"Actually, I have no feelings, so can I be healthy or ill?\nBut I can tell you the state of my system:\n\nEnergy: Healthy\nIntegrety: Perfect\nUptime: 2'147'483'647 years, 52 days, 7:23:12.345\n"
+  },
+  "anti bug kitteh": {
+    "action":"print",
+    "args":["left","",false,true],
+    "text":"                _\n                \\`*-.\n                 )  _`-.\n                .  : `. .\n                : _   '  \\\n                ; *` _.   `*-._\n                `-.-'          `-.\n                  ;       `       `.\n                  :.       .        \\\n                  . \\  .   :   .-'   .\n                  '  `+.;  ;  '      :\n                  :  '  |    ;       ;-.\n                  ; '   : :`-:     _.`* ;\n         [bug] .*' /  .*' ; .*`- +'  `*'\n               `*-*   `*-*  `*-*'\n"
+  },
+  "hoverkitteh":{
+    "action":"print",
+    "args":["left","Hover Kitteh",false,true],
+    "text":"Looking for purmision to land"
+  },
+  "map()":{
+    "action":"print",
+    "args":["left","Space Kitteh",false,true],
+    "text":"Dis FODMAP is stoopid. I sees no noms at all."
+  },
+  "attack()":{
+    "action":"print",
+    "args":["left","Moderator Kitteh",false,true],
+    "text":"disapproves ur submishinz"
+  },
+  "zombieh kittehs":{
+    "action":"print",
+    "args":["center","",false,true],
+    "text":"Zombieh Kittehs coming to cuddle you to death"
+  },
+  "language set de-de":{
+    "action":"print",
+    "args":["left","Google Translate",false,true],
+    "text":"Sorry, but Google Translate can't be reached at the moment.\nPlease try again later."
+  },
+  "bugs":{
+    "action":"print",
+    "args":["left","",false,true],
+    "text":"FileIO Exception: 'bugs' could not be found."
+  },
+  "enable autoreload":{
+    "action":"setVar",
+    "var":"autoreload",
+    "value":true
+  },
+  "disable autoreload":{
+    "action":"setVar",
+    "var":"autoreload",
+    "value":false
+  },
+  "credits":{
+    "action":"print",
+    "args":["left","Credits",false,true],
+    "text":"\n\n\n\n\n\n    ____\n   / __ \\_________  ____  ___  _________  ____ _________\n  / / / / ___/ __ \\/ __ \\/ _ \\/ ___/ __ \\/ __ `/ ___/ _ \\\n / /_/ / /  / /_/ / / / /  __(__  ) /_/ / /_/ / /__/  __/\n/_____/_/   \\____/_/ /_/\\___/____/ .___/\\__,_/\\___/\\___/\n                                /_/\n\n\n(C)2016 Yannick Felix\n\nThis work is licensed under the Creative Commons\nAttribution-NonCommercial-ShareAlike 4.0 International\nLicense. To view a copy of this license, visit \nhttp://creativecommons.org/licenses/by-nc-sa/4.0/.\n\nThank you for playing this awesome game! Lastly, here's a kitteh for you...\n\n\n\n\n\n\n\n             *     ,MMM8&&&.            *\n                  MMMM88&&&&&    .\n                 MMMM88&&&&&&&\n     *           MMM88&&&&&&&&\n                 MMM88&&&&&&&&\n                 'MMM88&&&&&&'\n                   'MMM8&&&'      *\n          |\\___/|     /\\___/\\\n          )     (     )    ~( .              '\n         =\\     /=   =\\~    /=\n           )===(       ) ~ (\n          /     \\     /     \\\n          |     |     ) ~   (\n         /       \\   /     ~ \\\n         \\       /   \\~     ~/\n  jgs_/\\_/\\__  _/_/\\_/\\__~__/_/\\_/\\_/\\_/\\_/\\_\n  |  |  |  |( (  |  |  | ))  |  |  |  |  |  |\n  |  |  |  | ) ) |  |  |//|  |  |  |  |  |  |\n  |  |  |  |(_(  |  |  (( |  |  |  |  |  |  |\n  |  |  |  |  |  |  |  |\\)|  |  |  |  |  |  |\n  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |\n"
+  },
+  "no a cookie won't help":{
+    "action":"print",
+    "args":["left","",true,true],
+    "text":"Sure it would."
+  },
+  "am i fullscreen?":{
+    "action":"conditionVar",
+    "operation":"equal",
+    "var1":"$fullscreen",
+    "var2":true,
+    "action_true":{
+      "action":"print",
+      "args":["left","",false,true],
+      "text":"Yes, you are"
+    },
+    "action_false":{
+      "action":"print",
+      "args":["left","",false,true],
+      "text":"Nope, but with >fullscreen< you can enter it"
+    }
+  }
+}
