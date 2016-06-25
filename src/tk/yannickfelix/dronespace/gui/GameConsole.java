@@ -3,6 +3,7 @@ package tk.yannickfelix.dronespace.gui;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 import java.awt.*;
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,9 +15,9 @@ public class GameConsole extends JEditorPane {
 
     private String text = "", displayedText = "", fontFamily = "Banana Square";
     private int viewX = 55;
-    private final int writeSpeed = 3, fontSize = 24;
+    private final int writeSpeed = 3, fontSize = 40;
     private boolean isWriting = false, markup = false;
-    private final float fontFactor = 14.5f;
+    private final float fontFactor = 11.2f /*14.5f*/;
 
     GameConsole() {
         super("text/html", "<html><body style='background-color: black;'></body><html>");
@@ -79,6 +80,7 @@ public class GameConsole extends JEditorPane {
                 this.text = "";
             }
         }
+        setCaretPosition(getDocument().getLength());
     }
 
     public void updateInputting(String currInput, int sizeX) {
@@ -89,7 +91,7 @@ public class GameConsole extends JEditorPane {
             if(System.currentTimeMillis() % 500 <= 250) caret = "_";
 
             int lineLength = currInput.length()+3;
-            displayedText += "\n"+mulString(" ", viewX-lineLength) + currInput + caret + "<b>&lt;</b>";
+            displayedText += "\n"+mulString(" ", viewX-lineLength) + currInput + caret + " <b>&lt;</b>";
         }
     }
 
@@ -106,13 +108,21 @@ public class GameConsole extends JEditorPane {
             }
         }
         if(!super.getText().equals(displayedText))
-            super.setText("<html><body style='background-color: black;'><pre style='font-size: "+fontSize+";font-family: \"Courier New\"; color: #18F500;'>"
+            setText("<html><body style='background-color: black;'><pre style='font-size: "+fontSize+";font-family: "+fontFamily+", \"Courier New\"; color: #18F500;'>"
                     + displayedText + "</pre></body></html>");
+    }
+
+    public void setText(String text) {
+        super.setText(text);
+    }
+
+    public void addText(String text) {
+        displayedText += text;
     }
 
     void removeLastLine() {
         if(!displayedText.endsWith("\n")) {
-            String[] splitted = displayedText.split("\n");
+            String[] splitted = displayedText.split("[\r\n]");
             displayedText = String.join("\n", (CharSequence[]) Arrays.copyOf(splitted, splitted.length - 1));
         }
     }
