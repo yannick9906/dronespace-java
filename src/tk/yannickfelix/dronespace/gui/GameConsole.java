@@ -14,7 +14,7 @@ public class GameConsole extends JEditorPane {
 
     private String text = "", displayedText = "", fontFamily = "Banana Square";
     private int viewX = 55;
-    private final int writeSpeed = 1, fontSize = 24;
+    private final int writeSpeed = 3, fontSize = 24;
     private boolean isWriting = false, markup = false;
     private final float fontFactor = 14.5f;
 
@@ -30,31 +30,33 @@ public class GameConsole extends JEditorPane {
 
         if(!text.equals("") && !text.equals(" ")){
             //removeLastLine();
+            //this.text = "\n" + this.text;
+
             if(autowrap) lines = stringBreak(text, viewX);
             else lines = new ArrayList<>(Arrays.asList(text.split("\n")));
             int nameLength = (name+"> ").length();
 
             switch (side) {
                 case "left":
-                    this.text += name + "> " + lines.get(0) + "\n";
+                    this.text += "<b>" + name + "&gt;</b> " + lines.get(0);
                     lines.remove(0);
 
                     if (autowrap) lines = stringBreak(String.join(" ", lines), viewX);
 
                     for (String line : lines) {
-                        this.text += line + "\n";
+                        this.text += "\n" + line;
                     }
                     break;
                 case "right":
                     int spaces = viewX - nameLength - lines.get(0).length();
-                    this.text += mulString(" ", spaces) + lines.get(0) + " <" + name + "\n";
+                    this.text += mulString(" ", spaces) + lines.get(0) + " <b>&lt;" + name + "</b>";
                     lines.remove(0);
 
                     if (autowrap) lines = stringBreak(String.join(" ", lines), viewX);
 
                     for (String line : lines) {
                         int lineLength = line.length();
-                        this.text += mulString(" ", viewX - lineLength) + line + "\n";
+                        this.text += "\n" + mulString(" ", viewX - lineLength) + line;
                     }
                     break;
                 case "center":
@@ -65,9 +67,8 @@ public class GameConsole extends JEditorPane {
                     break;
             }
 
-            if(newline) {
-                this.text += "\n";
-            }
+            if(newline) this.text += "\n \n";
+            else this.text += "\n";
 
             if(writing) {
                 isWriting = true;
@@ -88,7 +89,7 @@ public class GameConsole extends JEditorPane {
             if(System.currentTimeMillis() % 500 <= 250) caret = "_";
 
             int lineLength = currInput.length()+3;
-            displayedText += "\n"+mulString(" ", viewX-lineLength) + currInput + caret + " &lt;";
+            displayedText += "\n"+mulString(" ", viewX-lineLength) + currInput + caret + "<b>&lt;</b>";
         }
     }
 
@@ -96,6 +97,7 @@ public class GameConsole extends JEditorPane {
         this.viewX = (int) (sizeX / fontFactor + .5);
         for(int i = 0; i < writeSpeed; i++) {
             if(!text.equals("") && isWriting) {
+                doHTMLCheck();
                 String charToPrint = text.substring(0,1);
                 displayedText += charToPrint;
                 text = text.substring(1);
@@ -103,16 +105,27 @@ public class GameConsole extends JEditorPane {
                 isWriting = false;
             }
         }
-        displayedText = displayedText.replace("<","&lt;").replace(">", "&gt;");
-        super.setText("<html><body style='background-color: black;'><pre style='font-size: "+fontSize+";font-family: \"Courier New\"; color: #18F500;'>"
-                + displayedText + "</pre></body></html>");
+        if(!super.getText().equals(displayedText))
+            super.setText("<html><body style='background-color: black;'><pre style='font-size: "+fontSize+";font-family: \"Courier New\"; color: #18F500;'>"
+                    + displayedText + "</pre></body></html>");
     }
 
-    private void removeLastLine() {
+    void removeLastLine() {
         if(!displayedText.endsWith("\n")) {
             String[] splitted = displayedText.split("\n");
             displayedText = String.join("\n", (CharSequence[]) Arrays.copyOf(splitted, splitted.length - 1));
         }
+    }
+
+    private boolean doHTMLCheck() {
+        String[] html = {"<i>", "</i>", "<b>", "</b>"};
+        for(String thtml : html)
+            if(text.startsWith(thtml)) {
+                displayedText += thtml;
+                text.substring(thtml.length());
+                return true;
+            }
+        return false;
     }
 
     private String mulString(String string, int length) {

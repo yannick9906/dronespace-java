@@ -41,9 +41,6 @@ public class Window extends JFrame implements iGUI {
         this.setVisible(true);
 
         gameConsole.writeTick(this.getWidth());
-        gameConsole.printMessage("Testing testing.", "left", "Testy the Tester", false, true, true);
-        gameConsole.printMessage("Testing testing.", "right", "Testy the Tester", false, true, true);
-        gameConsole.printMessage("Testing testing.", "center", "Testy the Tester", false, true, true);
     }
 
     @Override
@@ -61,5 +58,15 @@ public class Window extends JFrame implements iGUI {
     @Override
     public String getUserText() {
         return gameInput.getUserText();
+    }
+
+    @Override
+    public boolean hasUserTypedSomething() {
+        return gameInput.hasUserTypedSomething();
+    }
+
+    @Override
+    public void removeLastLine() {
+        gameConsole.removeLastLine();
     }
 }

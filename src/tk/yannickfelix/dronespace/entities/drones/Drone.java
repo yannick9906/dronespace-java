@@ -3,6 +3,7 @@ package tk.yannickfelix.dronespace.entities.drones;
 import tk.yannickfelix.dronespace.actions.ActionHandler;
 import tk.yannickfelix.dronespace.actions.DroneActionHandler;
 import tk.yannickfelix.dronespace.cmds.Command;
+import tk.yannickfelix.dronespace.entities.Entity;
 import tk.yannickfelix.dronespace.gui.iGUI;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ import java.util.Locale;
  * http://creativecommons.org/licenses/by-nc-sa/4.0/.
  * @author Yannick Félix
  */
-public class Drone {
-    protected int droneID, currRoom, currEntity;
+public class Drone extends Entity {
+    protected int currRoom, currEntity;
     protected String name;
     protected float maxHealth, damage, maxCargo, maxEnergy, baseWeight, baseEnergyDraw;
     protected float currHealth, currCargoSize, currEnergyLevel, currEnergyConsumption;
@@ -29,7 +30,7 @@ public class Drone {
     protected iGUI gInterface;
 
     public Drone(int droneID, float maxHealth, float maxCargo, float maxEnergy, float baseWeight, float baseEnergyDraw, float damage, String name, iGUI gInterface) {
-        this.droneID = droneID;
+        super(droneID, EntityType.DRONE);
         this.maxHealth = maxHealth;
         this.maxCargo = maxCargo;
         this.maxEnergy = maxEnergy;
@@ -72,7 +73,7 @@ public class Drone {
     }
 
     public String getInfo() {
-        return String.format("%1$03d: %2$s (%3$.0fEU; %4$.0fl)", droneID, name, currEnergyLevel, currCargoSize);
+        return String.format("%1$03d: %2$s (%3$.0fEU; %4$.0fl)", entityID, name, currEnergyLevel, currCargoSize);
     }
 
     public String getDetailedInfo() {
@@ -115,14 +116,6 @@ public class Drone {
             currEnergyLevel = 0;
             //Todo Notify
         }
-    }
-
-    public int getDroneID() {
-        return droneID;
-    }
-
-    public void setDroneID(int droneID) {
-        this.droneID = droneID;
     }
 
     public int getCurrRoom() {
@@ -244,4 +237,6 @@ public class Drone {
     public void setAc(ActionHandler ac) {
         this.ac = ac;
     }
+
+
 }

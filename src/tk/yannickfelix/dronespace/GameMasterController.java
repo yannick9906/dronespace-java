@@ -13,10 +13,14 @@ public class GameMasterController {
     private ArrayList<String> issuedCommands;
     private int selOldCommand = -1;
 
+    private EntitiesController entitiesController;
+
     private iGUI gui;
 
     public GameMasterController() {
         gui = new Window("dronespace", 1024, 576);
+        entitiesController = new EntitiesController(gui);
+
         while(true) {
             update();
             try {
@@ -26,11 +30,18 @@ public class GameMasterController {
     }
 
     public void update() {
+        if(gui.hasUserTypedSomething()) {
+            String cmd = gui.getUserText();
+            gui.removeLastLine();
+            gui.printMessage(cmd, "right","",false, false, false);
+            handleCmd(cmd);
+        }
         gui.update();
     }
 
     public void handleCmd(String cmd) {
-
+        cmd = cmd.toLowerCase();
+        entitiesController.handleCmd(cmd);
     }
 
     public static void main(String[] args) {

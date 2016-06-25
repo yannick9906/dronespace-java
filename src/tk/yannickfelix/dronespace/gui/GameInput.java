@@ -7,7 +7,7 @@ import java.awt.event.ActionEvent;
  * Created by yanni on 23.06.2016.
  */
 public class GameInput extends JTextField {
-    private String lastString;
+    private String lastString = "";
 
     public GameInput() {
         super();

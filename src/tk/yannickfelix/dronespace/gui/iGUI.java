@@ -6,5 +6,7 @@ package tk.yannickfelix.dronespace.gui;
 public interface iGUI {
     void printMessage(String text, String side, String name, boolean autowrap, boolean writing, boolean newline);
     String getUserText();
+    boolean hasUserTypedSomething();
+    void removeLastLine();
     void update();
 }
