@@ -52,16 +52,33 @@ public class EntitiesController {
                 for (Entity drone : drones) {
                     gui.printMessage(drone.getInfo(), "left", "", false, true, false);
                 }
-                gui.printMessage("Type in \"<i>drone sel <droneid></i>\" to select a drone", "left", "", false, true, true);
+                gui.printMessage("Type in <i>\"drone sel {droneid}\"</i> to select a drone", "left", "", false, true, true);
             } else {
-                gui.printMessage("<i>No drones available</i>", "left", "", false, true, true);
+                gui.printMessage("<i>No drones available</i>\nActually, that's very sad...", "left", "", false, true, true);
             }
             return true;
         } else if(cmd.startsWith("drone sel")) {
-
+            int requestedID = Integer.parseInt(cmd.split(" ")[2]);
+            ArrayList<Entity> drones = getByType(Entity.EntityType.DRONE);
+            if(requestedID >= 0 && requestedID < drones.size()) {
+                selDrone = requestedID;
+                gui.printMessage("<b>Selected Drone</b> <i>"+drones.get(selDrone).getEntityID()+"</i>", "left", "", false, true, true);
+            } else {
+                gui.printMessage("I'm sorry. I simply can't select this drone.", "left", "", false, true, true);
+            }
             return true;
         } else if(cmd.startsWith("drone ")) {
-
+            if(selDrone >= 0) {
+                ArrayList<Entity> drones = getByType(Entity.EntityType.DRONE);
+                Drone drone = (Drone) drones.get(selDrone);
+                try {
+                    drone.handleCmd(cmd);
+                } catch(Exception e) {
+                    gui.printMessage("kbIONUEJBNÖUFbojndjfnsöoiehfnjnFÖJenöIWföonföo\nifhpöwsebnföjusbndfjgnkgfmwsnfosökjengöike\nsegjuujsbpguebnpgbnepugbnpeu", "left", "", false, true, true);
+                }
+            } else {
+                gui.printMessage("You have to select a drone before doing this.", "left", "", false, true, true);
+            }
             return true;
         } else if(cmd.equals("interact")) {
 

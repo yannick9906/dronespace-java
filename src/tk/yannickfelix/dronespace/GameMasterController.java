@@ -11,7 +11,6 @@ import java.util.ArrayList;
  * Created by yanni on 23.06.2016.
  */
 public class GameMasterController{
-    private ArrayList globalvars;
     private ArrayList<String> issuedCommands = new ArrayList<>();
     private int selOldCommand = -1;
 
